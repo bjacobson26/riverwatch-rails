@@ -1,0 +1,19 @@
+<h1 class="font-bold text-4xl" data-controller="autoreload">Carmel River Watch</h1>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+  <div class="my-4">
+     <h1 class="text-xl font-semibold">Lagoon</h1>
+     <p class="font-bold <%= @lagoon_data[:color]%>">STATUS: <%= @lagoon_data[:status].upcase %></p>
+     <p><%= time_ago_in_words(@lagoon_data[:last_checked_at]) %> ago level was <%= @lagoon_data[:current_level] %>ft and trending <%= @lagoon_data[:trend] %></br><span class="italic text-xs"> (<%= @lagoon_data[:previous_level]%>ft <%= time_ago_in_words(@lagoon_data[:previous_level_checked_at]) %> ago)</span></p>
+    <%= link_to 'More info', "https://water.weather.gov/ahps2/hydrograph.php?gage=CRMC1&wfo=mtr", target: "_blank", class: "text-xs text-blue-500 underline" %>
+    <%= image_tag 'https://water.weather.gov/resources/hydrographs/crmc1_hg.png' %>
+  </div>
+
+  <div class="my-4">
+     <h1 class="text-xl font-semibold">Highway 1</h1>
+      <p class="font-bold <%= @highway_data[:color]%>">STATUS: <%= @highway_data[:status].upcase %></p>
+     <p><%= time_ago_in_words(@highway_data[:last_checked_at]) %> ago level was <%= @highway_data[:current_level] %>ft and trending <%= @highway_data[:trend] %></br><span class="italic text-xs"> (<%= @highway_data[:previous_level]%>ft <%= time_ago_in_words(@highway_data[:previous_level_checked_at]) %> ago)</span></p>
+    <%= link_to 'More info', "https://water.weather.gov/ahps2/hydrograph.php?gage=CMRC1&wfo=mtr", target: "_blank", class: "text-xs text-blue-500 underline" %>
+    <%= image_tag 'https://water.weather.gov/resources/hydrographs/cmrc1_hg.png' %>
+  </div>
+</div>
