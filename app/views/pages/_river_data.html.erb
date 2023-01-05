@@ -1,0 +1,11 @@
+<div class="my-4">
+  <h1 class="text-xl font-semibold"><%= river_data[:name] %></h1>
+  <p class="font-bold <%= class_names(
+  "text-green-500" => river_data[:status] == :ok,
+  "text-orange-500" => river_data[:status] == :active,
+  "text-red-500" => river_data[:status] == :flood
+  ) %>">STATUS: <%= river_data[:status].upcase %></p>
+  <p>Level was <b class="font-semibold"><%= river_data[:current_level] %>ft</b> <%= time_ago_in_words(river_data[:last_checked_at]) %> ago and trending <%= river_data[:trend] %></br><span class="italic text-xs"> (<%= river_data[:previous_level]%>ft <%= time_ago_in_words(river_data[:previous_level_checked_at]) %> ago)</span></p>
+  <%= link_to 'More info', river_data[:link_url], target: "_blank", class: "text-xs text-blue-500 underline" %>
+  <%= image_tag river_data[:graph_url] %>
+</div>

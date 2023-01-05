@@ -36,6 +36,7 @@ class PagesController < ApplicationController
     end
 
     @lagoon_data = {
+      name: "Lagoon",
       flood_threshold: flood_threshold,
       action_threshold: action_threshold,
       current_level: current_level,
@@ -44,7 +45,9 @@ class PagesController < ApplicationController
       color: color,
       trend: trend,
       previous_level: previous_level,
-      previous_level_checked_at: previous_level_checked_at
+      previous_level_checked_at: previous_level_checked_at,
+      link_url: "https://water.weather.gov/ahps2/hydrograph.php?gage=CRMC1&wfo=mtr",
+      graph_url: "https://water.weather.gov/resources/hydrographs/crmc1_hg.png"
     }
   end
 
@@ -62,12 +65,12 @@ class PagesController < ApplicationController
 
     flood_threshold = 12.5
     action_threshold = 10.0
-    status, color = if current_level > flood_threshold
-      [:flood, 'text-red-500']
+    status = if current_level > flood_threshold
+      :flood
     elsif current_level > action_threshold
-      [:action, 'text-orange-500']
+      :action
     else
-      [:ok, 'text-green-500']
+      :ok
     end
 
     trend = if previous_level == current_level
@@ -79,15 +82,17 @@ class PagesController < ApplicationController
     end
 
     @highway_data = {
+      name: "Highway 1",
       flood_threshold: flood_threshold,
       action_threshold: action_threshold,
       current_level: current_level,
       last_checked_at: last_checked_at,
       status: status,
-      color: color,
       trend: trend,
       previous_level: previous_level,
-      previous_level_checked_at: previous_level_checked_at
+      previous_level_checked_at: previous_level_checked_at,
+      link_url: "https://water.weather.gov/ahps2/hydrograph.php?gage=CMRC1&wfo=mtr",
+      graph_url: "https://water.weather.gov/resources/hydrographs/cmrc1_hg.png"
     }
   end
 end
