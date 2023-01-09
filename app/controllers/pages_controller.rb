@@ -63,8 +63,8 @@ class PagesController < ApplicationController
     previous_level = second_node.children[1].children.text.to_f
 
 
-    flood_threshold = 12.5
-    action_threshold = 10.0
+    flood_threshold = 17.0
+    action_threshold = 15.0
     status = if current_level > flood_threshold
       :flood
     elsif current_level > action_threshold
