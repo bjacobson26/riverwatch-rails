@@ -49,6 +49,8 @@ gem 'faraday'
 
 gem "chartkick"
 
+gem 'rexml', '~> 3.2', '>= 3.2.4'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 

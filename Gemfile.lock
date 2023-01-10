@@ -229,6 +229,7 @@ DEPENDENCIES
   puma (~> 5.0)
   rails (~> 7.0.4)
   redis (~> 4.0)
+  rexml (~> 3.2, >= 3.2.4)
   selenium-webdriver
   sprockets-rails
   stimulus-rails
