@@ -19,5 +19,5 @@
   <span class="text-sm font-semibold text-gray-700"><%= time_ago_in_words(river_data[:max]['valid']).capitalize %> ago, the river peaked at <%= river_data[:max]['primary'] %>ft.</span></p>
   <%= link_to 'More info', river_data[:link_url], target: "_blank", class: "text-xs text-blue-500 underline" %>
 
-  <%= line_chart river_data[:graph_data], xtitle: "Time", ytitle: "Stage ft" %>
+  <%= line_chart river_data[:graph_data], id: "#{river_data[:name]}_chart", xtitle: "Time", ytitle: "Stage ft" %>
 </div>
