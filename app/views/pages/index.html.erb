@@ -1,6 +1,15 @@
 <h1 class="font-bold text-4xl text-blue-500" data-controller="autoreload">Carmel River Watch</h1>
+<small class="text-center text-xs my-4 m-auto italic text-gray-500">Data provided by <%= link_to nil, 'https://water.weather.gov/ahps/' %></small>
 
-<div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-  <%= render 'pages/river_data', river_data: @lagoon_data %>
-  <%= render 'pages/river_data', river_data: @highway_data %>
+<div class="grid grid-cols-1 gap-3">
+  <%= turbo_frame_tag :lagoon, src: lagoon_path do %>
+    <div class="mt-4 h-56 animate-pulse">
+      Loading Lagoon data...
+    </div>
+  <% end %>
+  <%= turbo_frame_tag :highway, src: highway_path do %>
+    <div class="flex items-center h-56 animate-pulse">
+      Loading Highway 1 data...
+    </div>
+  <% end %>
 </div>
