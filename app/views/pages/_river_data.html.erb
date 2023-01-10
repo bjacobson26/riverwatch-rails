@@ -5,19 +5,25 @@
   "text-yellow-500" => river_data[:status] == :action,
   "text-red-500" => river_data[:status] == :flood
   ) %>">STATUS: <%= river_data[:status].upcase %></p>
-  <p>Level was
+  <p class="my-2">Level was
     <b class="font-semibold">
       <%= river_data[:current_level] %>ft
     </b>
     <%= time_ago_in_words(river_data[:last_checked_at]) %>
-    ago and trending
-    <%= river_data[:trend] %>
-    <span title="<%= river_data[:previous_level] %>" class="font-semibold bg-gray-100 rounded-full px-2 py-1">
-      <%= river_data[:trend_percentage] %>%
+    ago
+
+    <span title="previous level was <%= river_data[:previous_level] %>ft <%= time_ago_in_words(river_data[:previous_level_checked_at]) %> ago."
+          class="text-sm font-semibold bg-gray-100 rounded-full px-2 py-1'">
+      <% if river_data[:trend] == :up %>
+        +
+      <% elsif river_data[:trend] == :down %>
+        -
+      <% end %>
+      <%= river_data[:trend_percentage].abs %>%
     </span>
   </p>
   <span class="text-sm font-semibold text-gray-700"><%= time_ago_in_words(river_data[:max]['valid']).capitalize %> ago, the river peaked at <%= river_data[:max]['primary'] %>ft.</span></p>
-  <%= link_to 'More info', @more_info_url, target: "_blank", class: "text-xs text-blue-500 underline" %>
+  <%= link_to 'More info', @more_info_url, target: "_blank", class: "text-sm my-1 text-blue-500 underline" %>
 
-  <%= line_chart river_data[:graph_data], id: "#{river_data[:name]}_chart", xtitle: "Time", ytitle: "Stage ft" %>
+  <%= line_chart river_data[:graph_data], id: "#{river_data[:name]}_chart" %>
 </div>
