@@ -80,23 +80,23 @@ class RiverData
         color: '#3b82f6'
       },
       {
-        name: "Flood",
-        data: [],
-        points: false,
-        color: '#f43f5e'
-      },
-      {
         name: "Action",
         data: [],
         points: false,
         color: '#eab308'
       },
+      {
+        name: "Flood",
+        data: [],
+        points: false,
+        color: '#f43f5e'
+      }
     ]
 
     raw_data['site']['observed']['datum'].each do |datum|
       result[0][:data] << [datum['valid'], datum['primary'].to_f]
-      result[1][:data] << [datum['valid'], flood_threshold]
-      result[2][:data] << [datum['valid'], action_threshold]
+      result[1][:data] << [datum['valid'], action_threshold]
+      result[2][:data] << [datum['valid'], flood_threshold]
     end
 
     result
