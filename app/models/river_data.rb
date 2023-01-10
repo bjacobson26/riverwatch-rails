@@ -74,7 +74,7 @@ class RiverData
   def graph_data
     result = [
       {
-        name: "Current Level",
+        name: "Level",
         data: [],
         points: false,
         color: '#3b82f6'
